@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Produtos</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<header class="admin-header">
+  <h2>📦 Produtos</h2>
+  <button onclick="logout()">Sair</button>
+</header>
+
+<main class="admin-main">
+  <h3>Novo Produto</h3>
+
+  <input id="name" placeholder="Nome do produto">
+  <input id="price" type="number" placeholder="Preço">
+  <input id="image" placeholder="URL da imagem">
+
+  <button onclick="createProduct()">Cadastrar</button>
+
+  <hr>
+
+  <h3>Lista de Produtos</h3>
+  <div id="product-list"></div>
+</main>
+
+<script src="js/products.js"></script>
+</body>
+</html>

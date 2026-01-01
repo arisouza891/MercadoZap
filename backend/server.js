@@ -2,6 +2,8 @@ const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors');
 const path = require('path');
+const productRoutes = require('./routes/products');
+app.use('/products', productRoutes);
 
 
 const app = express();

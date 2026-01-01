@@ -9,3 +9,7 @@ logoutBtn.onclick = () => {
   localStorage.removeItem('adminLogged');
   window.location.href = '/admin';
 };
+
+document.getElementById('products-btn').onclick = () => {
+  window.location.href = '/admin/products.html';
+};
