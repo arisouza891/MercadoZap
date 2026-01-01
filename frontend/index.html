@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>MercadoZap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header>
+  <h1>🛒 MercadoZap</h1>
+  <button id="cart-btn">Carrinho (<span id="cart-count">0</span>)</button>
+</header>
+
+<div id="toast" class="toast hidden">
+  ✔ Produto adicionado
+</div>
+
+<main>
+  <div id="products" class="products"></div>
+</main>
+
+<div id="cart-modal" class="cart-modal hidden">
+ <div class="cart-content">
+  <button id="close-cart" class="close-btn">✕</button>
+
+  <h2>Carrinho</h2>
+
+  <div id="cart-items"></div>
+
+  <div class="customer-name">
+    <label for="customer-name">Seu nome</label>
+    <input 
+      type="text" 
+      id="customer-name" 
+      placeholder="Ex: João Silva"/>
+  </div>
+
+  <p class="total">
+    Total: R$ <span id="cart-total">0.00</span>
+  </p>
+
+  <div class="cart-footer">
+    <button id="restore-order" class="btn secondary">
+      Último pedido
+    </button>
+
+    <button id="checkout-btn" class="btn primary">
+      Finalizar pedido
+    </button>
+  </div>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
