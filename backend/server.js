@@ -2,21 +2,33 @@ const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors');
 const path = require('path');
+
 const productRoutes = require('./routes/products');
-app.use('/products', productRoutes);
 
+const app = express(); // ✅ app vem ANTES de usar
 
-const app = express();
+// ======================
+// MIDDLEWARES
+// ======================
 app.use(cors());
 app.use(express.json());
 
-// Server frontend
+// ======================
+// ARQUIVOS ESTÁTICOS
+// ======================
 app.use(express.static(path.join(__dirname, '../frontend')));
+app.use('/admin', express.static(path.join(__dirname, '../frontend/admin')));
 
+// ======================
+// ROTAS DA API
+// ======================
+app.use('/products', productRoutes);
 
+// ======================
+// BANCO DE DADOS
+// ======================
 const db = new sqlite3.Database('./database.db');
 
-// Cria tabela e produtos iniciais
 db.serialize(() => {
   db.run(`
     CREATE TABLE IF NOT EXISTS products (
@@ -28,7 +40,7 @@ db.serialize(() => {
   `);
 
   db.get('SELECT COUNT(*) AS total FROM products', (err, row) => {
-    if (row.total === 0) {
+    if (!err && row.total === 0) {
       db.run(`
         INSERT INTO products (name, price, image)
         VALUES 
@@ -40,19 +52,10 @@ db.serialize(() => {
   });
 });
 
-
-
-// Rota de produtos
-app.get('/products', (req, res) => {
-  db.all('SELECT * FROM products', (err, rows) => {
-    if (err) {
-      return res.status(500).json({ error: err.message });
-    }
-    res.json(rows);
-  });
-});
-
+// ======================
+// SERVIDOR
+// ======================
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
+  console.log(`✅ Servidor rodando em http://localhost:${PORT}`);
 });

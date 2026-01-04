@@ -1,15 +1,24 @@
-// proteção de acesso
-if (localStorage.getItem('adminLogged') !== 'true') {
-  window.location.href = '/admin';
+// ===============================
+// PROTEÇÃO DO DASHBOARD
+// ===============================
+const logado = localStorage.getItem("adminLogado");
+
+if (!logado) {
+  window.location.href = "index.html";
 }
 
-const logoutBtn = document.getElementById('logout-btn');
+// ===============================
+// LOGOUT
+// ===============================
+const logoutBtn = document.getElementById("logout-btn");
 
-logoutBtn.onclick = () => {
-  localStorage.removeItem('adminLogged');
-  window.location.href = '/admin';
-};
+logoutBtn.addEventListener("click", () => {
+  localStorage.removeItem("adminLogged");
+  window.location.href = "index.html";
+});
 
-document.getElementById('products-btn').onclick = () => {
-  window.location.href = '/admin/products.html';
-};
+const productsBtn = document.getElementById("products-btn");
+
+productsBtn.addEventListener("click", () => {
+  window.location.href = "products.html";
+});

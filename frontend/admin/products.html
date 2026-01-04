@@ -3,30 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <title>Admin - Produtos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
 
 <header class="admin-header">
   <h2>📦 Produtos</h2>
-  <button onclick="logout()">Sair</button>
+  <button onclick="voltar()">⬅ Voltar</button>
 </header>
 
 <main class="admin-main">
-  <h3>Novo Produto</h3>
 
-  <input id="name" placeholder="Nome do produto">
-  <input id="price" type="number" placeholder="Preço">
-  <input id="image" placeholder="URL da imagem">
+  <div class="card">
+    <h3>Novo Produto</h3>
 
-  <button onclick="createProduct()">Cadastrar</button>
+    <input type="text" id="name" placeholder="Nome do produto">
+    <input type="number" id="price" placeholder="Preço">
+    <input type="text" id="image" placeholder="URL da imagem">
 
-  <hr>
+    <button onclick="addProduct()">Salvar</button>
+  </div>
 
-  <h3>Lista de Produtos</h3>
-  <div id="product-list"></div>
+  <div class="card">
+    <h3>Lista de Produtos</h3>
+    <div id="product-list"></div>
+  </div>
+
 </main>
 
+<script src="js/auth.js"></script>
 <script src="js/products.js"></script>
 </body>
 </html>
